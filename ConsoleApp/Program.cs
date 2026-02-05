@@ -12,6 +12,8 @@ namespace ConsoleApp
         {
             linQTest();
 
+            lambdaTest();
+
             Console.ReadKey();
         }
         public static void linQTest()
@@ -36,6 +38,32 @@ namespace ConsoleApp
 
             Console.Write("\n" + string.Join(", ", Enumerable.Range(1, 30)));
             Console.Write("\n" + string.Join(", ", sortedInts));
+
+        }
+        static void lambdaTest()
+        {
+            int[] nums = { 1, 2, 3, 4, 5 };
+            var squeredNums = nums.Select(x => x * x);
+
+            Console.WriteLine("\n" + string.Join(", ", squeredNums));
+
+            Func<double, double> cube = x => x * x * x;
+            foreach (int i in nums)
+            {
+                Console.Write(cube(i) + " ");
+            }
+
+            Func<int, int, bool> equalityTest = (x, y) => x == y ? true : false;
+            Console.WriteLine("\n" + equalityTest(20, 12));
+
+
+            string getWeather(int temp) => temp < 20 ? "cold" : "hot";
+            Console.WriteLine(getWeather(10));
+
+
+            var rnd = new Random();
+            var condition = rnd.Next(10) > 5;
+            Console.WriteLine(condition ? "big" : "small");
 
         }
     }
